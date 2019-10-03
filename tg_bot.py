@@ -79,11 +79,5 @@ def start(bot, update):
     update.message.reply_text('Привет! Я бот для викторин', reply_markup=get_keyboard())
 
 
-def dialog(bot, update):
-    custom_keyboard = [['Новый вопрос'], ['Сдаться']]
-    reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
-    bot.send_message(chat_id=update.message.chat_id, text="Custom Keyboard Test", reply_markup=reply_markup)
-
-
 if __name__ == '__main__':
     main()
