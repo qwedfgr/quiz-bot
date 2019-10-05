@@ -10,9 +10,9 @@ import quiz_tools
 
 dotenv.load_dotenv()
 QUESTIONS = quiz_tools.get_dict_of_questions()
-DB = redis.Redis(host=os.environ['host'],
-                 password=os.environ['password_redis'],
-                 port=os.environ['port'],
+DB = redis.Redis(host=os.environ['HOST'],
+                 password=os.environ['PASSWORD_REDIS'],
+                 port=os.environ['PORT'],
                  decode_responses=True, db=0
                  )
 
