@@ -10,8 +10,6 @@ import quiz_tools
 
 dotenv.load_dotenv()
 QUESTIONS = quiz_tools.get_dict_of_questions()
-
-
 DB = redis.Redis(host=os.environ['host'],
                  password=os.environ['password_redis'],
                  port=os.environ['port'],
@@ -35,16 +33,16 @@ def handle_new_question_request(bot, update):
 def handle_give_up(bot, update):
     question = DB.get(update.message.chat_id)
     answer = QUESTIONS[question]
-    update.message.reply_text(f'А теперь правильный ответ: {answer}', reply_markup=get_keyboard())
+    update.message.reply_text(f'Ответ: {answer}', reply_markup=get_keyboard())
 
 
 def handle_solution_attempt(bot, update):
     question = DB.get(update.message.chat_id)
     text = update.message.text
     if QUESTIONS[question] == text:
-        update.message.reply_text('Круто! Правильно!')
+        update.message.reply_text('Правильно!')
     else:
-        update.message.reply_text('Неа! Попробуй еще', reply_markup=get_keyboard())
+        update.message.reply_text('Неправильно! Попробуйте еще раз', reply_markup=get_keyboard())
 
 
 def get_keyboard():

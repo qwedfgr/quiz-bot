@@ -1,0 +1,5 @@
+TOKEN_TG=TOKEN_TG
+TOKEN_VK=TOKEN_VK
+host=host
+port=port
+password_redis=password_redis
