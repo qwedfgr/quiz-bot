@@ -45,6 +45,14 @@ def get_answer(event, vk_api):
     else:
         question = DB.get(event.user_id)
         text = event.text
+        if question is None:
+            vk_api.messages.send(
+                user_id=event.user_id,
+                message='Задайте вопрос!',
+                random_id=random.randint(1, 1000),
+                keyboard=get_keyboard()
+            )
+            return None
         if QUESTIONS[question] == text:
             vk_api.messages.send(
                 user_id=event.user_id,
