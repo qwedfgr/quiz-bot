@@ -18,9 +18,7 @@ DB = redis.Redis(host=os.environ['HOST'],
 
 
 def main():
-    dotenv.load_dotenv()
     token_tg = os.environ["TOKEN_TG"]
-
     run_tg_bot(token_tg)
 
 
